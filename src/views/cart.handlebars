@@ -1,0 +1,24 @@
+<h1 id="cart-title">Tu carrito</h1>
+
+<ol class="list-group list-group-numbered">
+    {{#each cart}}
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">{{this.product.title}}</div>
+      ${{this.product.price}}
+    </div>
+    <span class="badge bg-primary rounded-pill p-2">{{this.quantity}}</span>
+    <span class="badge bg-danger rounded-pill p-2 deletInCart" id="{{this.product._id}}">X</span>
+  </li>
+  {{/each}}
+</ol>
+
+<div id="buton-containerBuy">
+  <button id="finishSale" onclick="createPaymentIntent()">Finalizar tu compra</button>
+</div>
+
+<script src="/js/cart.js"></script>
+
+
+
+

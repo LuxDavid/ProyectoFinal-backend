@@ -1,0 +1,146 @@
+paths:
+  /api/products:
+    get:
+      summary: Obiene todas las productos
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Aqui estan todos los productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        "401":
+          description: Not autorized becouse the cookie was expired or you aren't signed
+        "500":
+          description: Error interno del Server. Query defectuoso de la DB
+
+    post:
+      summary: Crea un producto
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        "200":
+          description: Product created
+        "400":
+          description: No se pudo crear el producto
+
+
+  /api/products/{pid}:
+    get:
+      summary: Obiene un producto por su id
+      tags:
+        - Products
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: ID del producto que se solicita
+      responses:
+        "200":
+          description: Product founded
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        "400":
+          description: Product not founded
+
+    put:
+      summary: Actualiza una parte o todo el producto buscado por su id
+      tags:
+        - Products
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: ID del producto que se solicita
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        "200":
+          description: Product updated
+        "400":
+          description: Error to update product
+    delete:
+      summary: Eliminar un producto de la base de datos
+      tags:
+        - Products
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: ID del producto que se solicita
+      responses:
+        "200":
+          description: Product deleted
+        "400":
+          description: Error to delet product
+    
+
+components:
+    schemas:
+        Product:
+            type: object
+            properties:
+                title:
+                    type: string
+                    description: Título del producto
+                description:
+                    type: string
+                    description: Descripción del producto
+                code:
+                    type: string
+                    description: Código unico del producto
+                price:
+                    type: string
+                    description: Precio del producto
+                status:
+                    type: boolean
+                    description: Estado del producto en true por defecto
+                stock:
+                    type: number
+                    description: Cantidad en stock del producto
+                category:
+                    type: string
+                    description: Categoría del producto
+                thumbnails:
+                    type: array
+                    description: Array de imagenes de un producto
+                    items:
+                      type: string
+                owner:
+                    type: string
+                    description: Por defecto admin pero si es creado por un usuario premium obtiene el correo del creador
+    examples:
+        productExample:
+            value:
+                status: success
+                message: Product found successful
+                data:
+                    _id: 65597877dc9e37907929b6d2
+                    title: Luces rgb
+                    description: Luces led de 400W
+                    code: 100pp
+                    price: '350'
+                    status: true
+                    stock: 23
+                    category: leds
+                    thumbnails: []
+                    __v: 0
+                    owner: admin

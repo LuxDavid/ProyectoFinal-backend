@@ -1,0 +1,47 @@
+<h1>Modificar usuario</h1>
+
+<div id="searchContainer">
+
+<label for="email">Email:</label>
+<input type="email" class="register-data" name="email" placeholder="Escribe el email del usuario" id="userForChanges" />
+
+<br />
+<br />
+
+<div class="input-group flex-nowrap">
+  <span class="input-group-text" id="addon-wrapping">Role</span>
+ <select id="role-select">
+  <option value="admin" >Admin</option>
+  <option value="user" >User</option>
+  <option value="premium" >Premium</option>
+</select>
+</div>
+
+<br />
+
+<button id="searchUser">Buscar</button>
+<br />
+<br />
+
+<button id="updateUser">Actualizar Rol</button>
+<br />
+<br />
+
+<button id="deletUser">Borrar usuario</button>
+
+</div>
+
+<div id="infoForUser">
+
+<h2 id="info-user">"Aqui aparecera la informacion del usuario cuando lo busques"</h2>
+
+<div id="details-user">
+
+</div>
+
+</div>
+
+<script type="module" src="/js/modify.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+

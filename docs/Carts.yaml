@@ -1,0 +1,193 @@
+paths:
+  /api/carts/{cid}:
+    get:
+      summary: Obiene un carrito en especifico por su userCart
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: ID del carrito que se solicita  
+      responses:
+        "200":
+          description: cart founded
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        "400":
+          description: Cart not founded
+
+    put:
+      summary: sobreescribir todo los productos del carrito un array vacio
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: ID del userCart que se solicita  
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/overWrite'
+      responses:
+        "200":
+          description: cart overwrited
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        "400":
+          description: Error to overwrite the cart
+
+    delete:
+      summary: Borrar un carrito de la base de datos
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: ID del userCart que se solicita  
+      responses:
+        "200":
+          description: cart deleted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+        "400":
+          description: Error to delete cart
+
+  /api/carts/{cid}/product/{pid}:
+    post:
+      summary: sobreescribir todo los productos del carrito un array vacio
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: ID del userCart que se solicita
+      - name: pid
+        in: path
+        required: true
+        description: ID del producto que se solicita  
+      responses:
+        "200":
+          description: product added
+        "500":
+          description: error to add product
+
+    put:
+      summary: sobreescribir la cantidad de un producto en el carrito
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: ID del userCart que se solicita
+      - name: pid
+        in: path
+        required: true
+        description: ID del producto que se solicita par actualizar la cantidad 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/quantity'
+      responses:
+        "200":
+          description: uptdate quantity of product succes
+        "400":
+          description: error to uptdate quantity of product
+
+    delete:
+      summary: Eliminar un producto del carrito
+      tags:
+        - Carts
+      parameters:
+      - name: cid
+        in: path
+        required: true
+        description: ID del userCart que se solicita
+      - name: pid
+        in: path
+        required: true
+        description: ID del producto que se solicita  
+      responses:
+        "200":
+          description: product deleted
+        "500":
+          description: error to delet product
+  
+
+
+
+
+
+components:
+    schemas:
+        Cart:
+            type: object
+            properties:
+                products:
+                    type: array
+                    description: Productos en el carrito
+                    items:
+                      type: object
+                userCart:
+                    type: string
+                    description: Id unico del dueño del carrito
+        overWrite:
+          type: object
+          properties:
+           products: 
+              type: array
+              description: Un array vacio
+        quantity:
+          type: object
+          properties:
+           quantity: 
+              type: number
+              description: New quantity of products
+                    
+    examples:
+        CartExample:
+            value:
+                status: success
+                message: Cart found success
+                data:
+                    _id: 65c26e3aadebe740bcc9a1b0
+                    products: [ {
+                    product: {
+                    owner": "admin",
+                    _id: "65597877dc9e37907929b6d2",
+                    title: "Luces rgb",
+                    description: "Luces led de 400W",
+                    code: "100PP",
+                    price: "320",
+                    status: true,
+                    stock: 26,
+                    category: "leds",
+                    thumbnails": ["luces-led.jpg"],
+                    __v: 0
+                              },
+                    quantity: 2,
+                    _id: "65dbdd65b978d5596d37e4e0"
+                    }]
+                    userCart: 65a4855822aa5e450ec7afcb
+                    __v: 0
+

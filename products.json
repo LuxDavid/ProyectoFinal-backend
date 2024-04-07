@@ -1,0 +1,83 @@
+[
+	{
+		"id": 1,
+		"title": "Computadora Gamar PRO",
+		"description": "Computadora de alta gama",
+		"price": 20000,
+		"thumbnails": [
+			"PC2.jpg"
+		],
+		"code": "555BB",
+		"stock": 16,
+		"status": true,
+		"category": "Electronic Components"
+	},
+	{
+		"id": 3,
+		"title": "Monitor Gamer",
+		"description": "Monitor 1920 x 1080 175HZ",
+		"price": 5000,
+		"thumbnails": [
+			"PC2.jpg"
+		],
+		"code": "555AA",
+		"stock": 10,
+		"status": true,
+		"category": "Electronic Components"
+	},
+	{
+		"id": 4,
+		"title": "Pc gamer alta gama ",
+		"description": "Esta Pc tiene aun mas RGB",
+		"price": 40000,
+		"thumbnails": [
+			"PC1.jpg",
+			"PC2.jpg"
+		],
+		"code": "999PP",
+		"stock": 16,
+		"status": true,
+		"category": "Electronic Components"
+	},
+	{
+		"id": 5,
+		"title": " Luces rgb",
+		"description": "Luces led de 400W",
+		"price": 350,
+		"thumbnails": [
+			"PC1.jpg",
+			"PC2.jpg"
+		],
+		"code": "100PP",
+		"stock": 16,
+		"status": true,
+		"category": "Electronic Components"
+	},
+	{
+		"id": 6,
+		"title": "Bocinas alta definicion",
+		"description": "Unas bocinas muy potentes",
+		"price": 900,
+		"thumbnails": [
+			"PC1.jpg",
+			"PC2.jpg"
+		],
+		"code": "AAAA9",
+		"stock": 16,
+		"status": true,
+		"category": "Electronic Components"
+	},
+	{
+		"id": 7,
+		"title": "Television LG",
+		"description": "Una buena televesion",
+		"price": 8000,
+		"thumbnails": [
+			"1.png"
+		],
+		"code": "BBBB8",
+		"stock": 20,
+		"status": true,
+		"category": "Electronicos"
+	}
+]

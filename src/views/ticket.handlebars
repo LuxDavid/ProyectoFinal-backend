@@ -1,0 +1,60 @@
+<h1 id="cart-title">Este es es el resultado de tu compra</h1>
+
+<div class="container-products">
+
+<ol class="list-group list-group-numbered">
+    {{#each cart}}
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">{{this.product.title}}</div>
+      ${{this.product.price}}
+    </div>
+    <span class="badge bg-primary rounded-pill p-2">{{this.quantity}}</span>
+  </li>
+  {{/each}}
+
+<ol class="list-group">
+
+<li class="list-group-item d-flex justify-content-between align-items-start detail-buy" >
+ <div class="ms-2 me-auto" >
+      <div class="fw-bold">Comprador: {{this.client.name}} {{this.client.last_name}} </div>
+      <div class="fw-bold"><p>Total de compra:${{this.amount}} </p></div>
+      <div class="fw-bold"><p>Fecha de la compra:{{this.date}} </p></div>
+</div>
+</li>
+
+<li class="list-group-item d-flex justify-content-between align-items-start detail-buy" >
+
+<div id="buton-containerBuy">
+  <a href="/">
+    <button id="finishSale">Volver al inicio</button>
+  </a>
+</div>
+
+</li>
+
+</ol>
+
+</ol>
+
+
+</div>
+
+ <script>
+
+    function miEvento () {
+
+        fetch(`/api/carts/purchase`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        });
+
+        
+    }
+
+     window.onload = miEvento;
+
+
+</script> 

@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/app.js -p MONGO"
+    "start": "node src/app.js -p MONGO"
   },
   "keywords": [],
   "author": "",
